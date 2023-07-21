@@ -22,7 +22,11 @@ class UpdateTarefaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'data' => 'required|date',
+            'assunto'=> 'required|min: 2 | max: 50',
+            'descricao'=> 'required|min: 2 | max: 250',
+            'realizado'=> 'required|boolean',
+            'tipo_id'=> 'required|numeric',
         ];
     }
 }

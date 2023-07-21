@@ -14,6 +14,7 @@ class TipoController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**
