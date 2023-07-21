@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\TarefaController;
+use App\Http\Controllers\TipoController;
+use App\Models\Tarefa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('tarefas.index');
 });
+
+
+Route::resource('tipos',TipoController::class);
+
+Route::resource('tarefas',TarefaController::class);
+
