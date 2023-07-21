@@ -12,9 +12,9 @@ class TipoController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-        
+    {    
+        $tipos = Tipo::all();
+        return view ('tipos.tipos',compact(['tipos']));        
     }
 
     /**
@@ -22,7 +22,7 @@ class TipoController extends Controller
      */
     public function create()
     {
-        //
+        return view ('tipos.create'); 
     }
 
     /**
@@ -30,7 +30,9 @@ class TipoController extends Controller
      */
     public function store(StoreTipoRequest $request)
     {
-        //
+        $data = $request->all();
+        $tipo = Tipo::create($data); 
+	    return redirect()->route('tipos.index');
     }
 
     /**
@@ -38,7 +40,7 @@ class TipoController extends Controller
      */
     public function show(Tipo $tipo)
     {
-        //
+        return view ('tipos.show',compact(['tipo'])); 
     }
 
     /**
@@ -46,7 +48,7 @@ class TipoController extends Controller
      */
     public function edit(Tipo $tipo)
     {
-        //
+        return view ('tipos.edit',compact(['tipo']));
     }
 
     /**
@@ -54,7 +56,9 @@ class TipoController extends Controller
      */
     public function update(UpdateTipoRequest $request, Tipo $tipo)
     {
-        //
+        $data = $request->all();
+        $tipo->update($data); 
+	    return redirect()->route('tipos.index');
     }
 
     /**
@@ -62,6 +66,7 @@ class TipoController extends Controller
      */
     public function destroy(Tipo $tipo)
     {
-        //
+        $tipo->delete(); 
+	    return redirect()->route('tipos.index');
     }
 }
